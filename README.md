@@ -60,3 +60,6 @@ my-nextjs-app/
 ├── tailwind.config.ts
 └── tsconfig.json
 ```
+
+- we can not use ant react hooks or state management directly in nextjs.
+- But we can add `'use client'` on top of file so we can use hook in file.
