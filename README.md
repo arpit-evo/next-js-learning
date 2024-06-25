@@ -29,3 +29,34 @@ Would you like to use App Router? (recommended) No / Yes
 Would you like to customize the default import alias (@/*)? No / Yes
 What import alias would you like configured? @/*
 ```
+
+### Folder Structure
+
+- it has `src` as root but some times it has `app` folder as root.
+- Routing depends on Folder structure of file.
+- If we give folder name `chai` then in app it is called as `/chai` routes.
+- each folder has `page.tsx` file for rendering content on that route and it might have it's own `layout file`.
+
+```bash
+my-nextjs-app/
+├── public/
+│   ├── images/
+│   └── ...
+├── src/
+│   ├── app/
+│   │   ├── global.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   │   ├── chai/
+│   │   └── page.tsx
+│   └── ...
+├── .eslintrc.json
+├── .gitignore
+├── next-env.d.ts
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json
+```
