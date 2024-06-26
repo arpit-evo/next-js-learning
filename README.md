@@ -47,7 +47,7 @@ my-nextjs-app/
 │   │   ├── global.css
 │   │   ├── layout.tsx
 │   │   └── page.tsx
-│   │   ├── chai/
+│   │   ├── chai/    // as route path
 │   │   └── page.tsx
 │   └── ...
 ├── .eslintrc.json
