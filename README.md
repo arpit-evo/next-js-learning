@@ -63,3 +63,40 @@ my-nextjs-app/
 
 - we can not use ant react hooks or state management directly in nextjs.
 - But we can add `'use client'` on top of file so we can use hook in file.
+- we can right apis into `api` folder so api is not push into client side and inside any folder we have to give filename only `route.ts`.
+- we can write dynamic route like we have to render `:id` route then we define folder name like this `[id]` and inside that folder make page file.
+- learn about `nodemailer` and use of `mailtrap`. [reference to nodemailer file](https://github.com/arpit-evo/nextjs-auth-project/blob/main/src/helpers/mailer.ts)
+
+### Middleware
+
+- we can write middleware at `src/` level and the filename is also `middleware.ts`.
+
+example:
+
+```TypeScript
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+
+  const isPublicPath =
+    path === "/login" || path === "/signup" || path === "/verifyemail";
+
+  const token = request.cookies.get("token")?.value || "";
+
+  if (isPublicPath && token) {
+    return NextResponse.redirect(new URL("/", request.nextUrl));
+  }
+
+  if (!isPublicPath && !token) {
+    return NextResponse.redirect(new URL("/login", request.nextUrl));
+  }
+}
+
+// See "Matching Paths" below to learn more
+// this decide which page you want to run this middleware
+export const config = {
+  matcher: ["/", "/profile", "/login", "/signup", "/verifyemail"],
+};
+```
